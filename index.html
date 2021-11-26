@@ -24,50 +24,88 @@
                     return choice;
                 }
             }
+            let decision;
+            let playerRecord = 0, compRecord = 0;
 
-            let compSelection = computerPlay(max);
-            let playerSelection = prompt("type rock, paper, or scissor");
-            playerSelection = playerSelection.toLowerCase();
+            //let compSelection = computerPlay(max);
+            //let playerSelection = prompt("type rock, paper, or scissor");
+            //playerSelection = playerSelection.toLowerCase();
             function playRound(compSelection, playerSelection) {
-                let decision;
+                //let decision;
+                //let playerRecord = 0, compRecord = 0;
                 if(compSelection === "rock" && playerSelection === "rock") {
-                    decision = "Tie, both are Rock!";
-                    return alert(decision);
+                    //decision = "Tie, both are Rock!";
+                    //return alert(decision);
+                    return 0;
                 }
                 else if(compSelection === "rock" && playerSelection === "paper") {
-                    decision = "You win! Paper beats Rock!";
-                    return alert(decision);
+                    //decision = "You win! Paper beats Rock!";
+                    //return alert(decision);
+                    return ++playerRecord;
                 }
                 else if(compSelection === "rock" && playerSelection === "scissor") {
-                    decision = "You Lose! Rock beats Scissor!";
-                    return alert(decision);
+                    //decision = "You Lose! Rock beats Scissor!";
+                    //return alert(decision);
+                    return ++compRecord;
                 }
                 else if(compSelection === "paper" && playerSelection === "rock") {
-                    decision = "You Lose! Paper beats Rock!";
-                    return alert(decision);
+                    //decision = "You Lose! Paper beats Rock!";
+                    //return alert(decision);
+                    return ++compRecord;
                 }
                 else if(compSelection === "paper" && playerSelection === "paper") {
-                    decision = "Tie, both are Paper!";
-                    return alert(decision);
+                    //decision = "Tie, both are Paper!";
+                    //return alert(decision);
+                    return 0;
                 }
                 else if(compSelection === "paper" && playerSelection === "scissor") {
-                    decision = "You Win! Scissor beats Paper!";
-                    return alert(decision);
+                    //decision = "You Win! Scissor beats Paper!";
+                    //return alert(decision);
+                    return ++playerRecord;
                 }
                 else if(compSelection === "scissor" && playerSelection === "rock") {
-                    decision = "You win! Rock beats Scissor!";
-                    return alert(decision);
+                    //decision = "You win! Rock beats Scissor!";
+                    //return alert(decision);
+                    return ++playerRecord;
                 }
                 else if(compSelection === "scissor" && playerSelection === "paper") {
-                    decision = "You Lose! Scissor beats Paper!";
-                    return alert(decision);
+                    //decision = "You Lose! Scissor beats Paper!";
+                    //return alert(decision);
+                    return ++compRecord;
                 }
                 else if(compSelection === "scissor" && playerSelection === "scissor") {
-                    decision = "Tie! both are Scissor!";
+                    //decision = "Tie! both are Scissor!";
+                    //return alert(decision);
+                    return 0;
+                }
+                else {
+                    return alert("Error!");
+                }
+            }
+
+            function game() {
+                for(i = 1; i <= 5; i++) {
+                    let compSelection = computerPlay(max);
+                    let playerSelection = prompt("type rock, paper, or scissor");
+                    playerSelection = playerSelection.toLowerCase();
+                    playRound(compSelection, playerSelection);
+                }
+                if(compRecord > playerRecord) {
+                    decision = "You Lose!";
+                    return alert(decision);
+                }
+                else if(playerRecord > compRecord) {
+                    decision = "You Win!";
+                    return alert(decision);
+                }
+                else if (compRecord === playerRecord) {
+                    decision = "Tie!";
                     return alert(decision);
                 }
             }
-            console.log(playRound(compSelection, playerSelection));
+
+            console.log(game());
+            //console.log(playRound(compSelection, playerSelection));
         </script>
     </body>
 </html>
